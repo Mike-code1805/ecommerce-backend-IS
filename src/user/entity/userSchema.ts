@@ -18,10 +18,9 @@ export const userSchema = new Schema<User>(
     },
     passwordConfirmation: {
       type: String,
-      required: true,
     },
     gender: {
-      type: Boolean,
+      type: String,
       required: true,
     },
     termsCond: {
