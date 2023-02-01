@@ -1,7 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { User } from "../../user/entity/user";
 import { UserModel } from "../../user/entity/UserModel";
+import { userLoginService } from "../services/userLoginService";
 import { encrypPassword } from "../utils/passwordManager";
+import { validateTokenUser } from "../utils/tokenManager";
 
 export const userRegisterController = async (
   req: Request<{}, {}, User>,
@@ -10,9 +12,9 @@ export const userRegisterController = async (
 ) => {
   try {
     const { username, email, gender, termsCond } = req.body;
-    console.log(req.body.password);
+
     const password = await encrypPassword(req.body.password);
-    console.log({ password });
+
     const newUser = new UserModel({
       username,
       email,
@@ -20,9 +22,16 @@ export const userRegisterController = async (
       gender,
       termsCond,
     });
+    // const validation = validateTokenUser(
+    //   req.headers.authorization,
+    //   "123456789"
+    // );
 
-    const userResponse = await newUser.save();
-    res.status(201).json(userResponse);
+    await newUser.save();
+
+    const user = await userLoginService(req.body);
+
+    res.status(201).json(user);
   } catch (error: any) {
     res.status(500).json(error.message);
   }
