@@ -9,10 +9,10 @@ import {
 const authRouter: Router = Router();
 
 authRouter
-  .route("/api/auth/login")
+  .route("/login")
   .post(bodyReqValidator(loginUserSchema), userLoginController);
 authRouter
-  .route("/api/auth/register")
+  .route("/register")
   .post(bodyReqValidator(registerUserSchema), userRegisterController);
 
 export default authRouter;
