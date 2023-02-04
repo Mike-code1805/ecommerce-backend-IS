@@ -7,12 +7,14 @@ import express, {
 } from "express";
 import authRouter from "./auth/authRoutes";
 import { ApplicationError } from "./customErrors/AplicationError";
+import productRouter from "./product/productRoutes";
 
 const app: Application = express();
 
 app.use(express.json());
 
-app.use(authRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/product", productRouter);
 
 app.use(
   (err: ApplicationError, req: Request, res: Response, next: NextFunction) => {
