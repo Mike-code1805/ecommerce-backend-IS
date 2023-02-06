@@ -5,6 +5,7 @@ export interface User {
   passwordConfirmation: string;
   gender: string;
   termsCond: boolean;
+  role: string;
 }
 
 export interface UserLogin {

@@ -27,6 +27,10 @@ export const userSchema = new Schema<User>(
       type: Boolean,
       required: true,
     },
+    role: {
+      type: String,
+      default: "usuario",
+    },
   },
   {
     timestamps: true,

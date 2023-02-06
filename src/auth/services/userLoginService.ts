@@ -17,7 +17,7 @@ export const userLoginService = async (userReq: UserLogin) => {
       throw new Error("Password is invalid");
     }
 
-    const token = createTokenUser({ id: user.id }, "123456789");
+    const token = createTokenUser({ id: user.id });
 
     return { user, token };
   } catch (error: any) {
