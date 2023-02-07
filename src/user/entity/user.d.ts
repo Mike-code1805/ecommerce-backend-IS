@@ -1,4 +1,5 @@
 export interface User {
+  id: UserId;
   username: string;
   email: string;
   password: string;
@@ -11,4 +12,8 @@ export interface User {
 export interface UserLogin {
   email: string;
   password: string;
+}
+
+export interface UserId {
+  _id: Types.ObjectId;
 }

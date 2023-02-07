@@ -6,6 +6,7 @@ import express, {
   Response,
 } from "express";
 import authRouter from "./auth/authRoutes";
+import cartRouter from "./cart/cartRoutes";
 import { ApplicationError } from "./customErrors/AplicationError";
 import productRouter from "./product/productRoutes";
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
+app.use("/api/cart", cartRouter);
 
 app.use(
   (err: ApplicationError, req: Request, res: Response, next: NextFunction) => {
