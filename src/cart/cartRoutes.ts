@@ -2,17 +2,24 @@ import { Router } from "express";
 import { verifyUser } from "../product/middlewares/verifyUser";
 import {
   createCartController,
-  getAllCartsUserController,
-  getCartsController,
-} from "./controllers/cartControllers";
+  getAllCartsController,
+  getCartsUserController,
+  deleteCartController,
+  editCartController,
+} from "./controllers";
 
 const cartRouter: Router = Router();
 
 cartRouter
   .route("")
   .post(verifyUser, createCartController)
-  .get(getCartsController);
+  .get(getAllCartsController);
 
-cartRouter.route("/mycart").get(verifyUser, getAllCartsUserController);
+cartRouter.route("/mycart").get(verifyUser, getCartsUserController);
+
+cartRouter
+  .route("/:id")
+  .delete(verifyUser, deleteCartController)
+  .put(verifyUser, editCartController);
 
 export default cartRouter;
