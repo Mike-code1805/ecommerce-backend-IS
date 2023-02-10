@@ -9,10 +9,12 @@ import authRouter from "./auth/authRoutes";
 import cartRouter from "./cart/cartRoutes";
 import { ApplicationError } from "./customErrors/AplicationError";
 import productRouter from "./product/productRoutes";
+import cors from "cors";
 
 const app: Application = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
