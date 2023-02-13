@@ -13,8 +13,6 @@ import { ApplicationError } from "./customErrors/AplicationError";
 import productRouter from "./product/productRoutes";
 import cors from "cors";
 
-console.log(process.env.STRIPE_SECRET_KEY);
-
 const app: Application = express();
 
 app.use(express.json());
