@@ -5,6 +5,7 @@ import {
   getAllProductController,
   updateProductController,
   deleteProductController,
+  getProductByIdController,
 } from "./controllers/controllers";
 import { productValidationSchema } from "./middlewares/productValidation";
 import { verifyAdmin } from "./middlewares/verifyAdmin";
@@ -22,6 +23,7 @@ productRouter
 
 productRouter
   .route("/:id")
+  .get(getProductByIdController)
   .put(verifyAdmin, updateProductController)
   .delete(verifyAdmin, deleteProductController);
 
