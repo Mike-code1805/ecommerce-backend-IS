@@ -1,6 +1,7 @@
 import { Router } from "express";
+import { verifyUser } from "../product/middlewares/verifyUser";
 import { bodyReqValidator } from "../shared/validators/bodyReqValidator";
-import { userLoginController, userRegisterController } from "./controllers";
+import { userLoginController, userRegisterController, validateUserController } from "./controllers";
 import {
   loginUserSchema,
   registerUserSchema,
@@ -15,4 +16,5 @@ authRouter
   .route("/register")
   .post(bodyReqValidator(registerUserSchema), userRegisterController);
 
+authRouter.route("/validate").post(verifyUser, validateUserController);
 export default authRouter;

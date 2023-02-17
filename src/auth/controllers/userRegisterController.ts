@@ -11,6 +11,7 @@ export const userRegisterController = async (
   next: NextFunction
 ) => {
   try {
+    console.log("Im in register controller");
     const { username, email, gender, termsCond, role } = req.body;
 
     const password = await encrypPassword(req.body.password);
