@@ -1,4 +1,5 @@
 export interface Product {
+  id: ProductId;
   title: string;
   price: number;
   description: string;
@@ -6,4 +7,8 @@ export interface Product {
   image: string;
   inStock: boolean;
   rating: number;
+}
+
+export interface ProductId {
+  _id: Types.ObjectId;
 }

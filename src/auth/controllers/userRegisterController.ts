@@ -11,7 +11,8 @@ export const userRegisterController = async (
   next: NextFunction
 ) => {
   try {
-    const { username, email, gender, termsCond } = req.body;
+    console.log("Im in register controller");
+    const { username, email, gender, termsCond, role } = req.body;
 
     const password = await encrypPassword(req.body.password);
 
@@ -21,6 +22,7 @@ export const userRegisterController = async (
       password,
       gender,
       termsCond,
+      role,
     });
     // const validation = validateTokenUser(
     //   req.headers.authorization,
